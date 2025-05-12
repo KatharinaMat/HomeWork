@@ -2,8 +2,11 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
-import org.openqa.selenium.By;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -12,6 +15,10 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 
+
+@Listeners({AllureTestNg.class})
+@Epic("For HomeWork test")
+@Feature("HomeWork test")
 public class LuminorTest {
 
     @BeforeClass
@@ -19,7 +26,7 @@ public class LuminorTest {
         Configuration.browser = "chrome";
     }
 
-    @Test
+    @Test(description = "Test for HomeWork")
     public void searchTest() {
         open("https://www.imdb.com/");
         $(byId("suggestion-search")).setValue("Black mirror").pressEnter();
